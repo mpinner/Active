@@ -88,10 +88,13 @@ void reCalcXBrightness() {
 
 
 void calcXPosition() {
+  print("[");
   for (int j = 0; j < count[1]; j++) {
     for (int k = 0; k < count[2]; k++) {
 
-      xPosition[j][k] = ((int)xDistance[j][k]);
+      int distance = ((int)xDistance[j][k]);
+        xPosition[j][k] = distance;
+      print("{\"point\": [" + j + ", " + k + ", " + distance + "]},");
     }
   }
 
@@ -152,7 +155,7 @@ void draw() {
   translate(width/2, height/2, 0);
 
 
-// video is broken
+  // video is broken
   /*
   if (video.available()) {
    video.read();
@@ -224,7 +227,7 @@ void draw() {
 
 
 
-// draws an image in the form
+  // draws an image in the form
   /*  
    
    beginShape();
