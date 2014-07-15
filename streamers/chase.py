@@ -2,10 +2,10 @@
 
 # Light each LED in sequence, and repeat.
 
-import opc, time
+import opc, time, os
 
 numLEDs = 512
-client = opc.Client('192.168.2.5:7890')
+client = opc.Client(os.getenv('OPC_SERVER'))
 
 while True:
 	for i in range(numLEDs):
