@@ -2,10 +2,10 @@
 
 # Open Pixel Control client: Every other light to solid white, others dark.
 
-import opc, time
+import opc, time, os
 
-numPairs = 256
-client = opc.Client('192.168.2.5:7890')
+numPairs = 720
+client = opc.Client(os.getenv('OPC_SERVER'))
 
 black = [ (0,0,0), (0,0,0) ] * numPairs
 white = [ (255,255,255), (0,0,0) ] * numPairs
