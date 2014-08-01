@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. /boot/uboot/env.sh
+
 cd /home/debian/git/Active;
 
 while true; do
