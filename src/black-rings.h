@@ -19,10 +19,10 @@
 #include "lib/effect.h"
 #include "lib/noise.h"
 #include "lib/texture.h"
-//#include "lib/BlackLib.h"
-//#include "lib/BlackDef.h"
+#include "lib/BlackLib.h"
+#include "lib/BlackDef.h"
 
- 
+
 
 class RingsEffect : public Effect
 {
@@ -31,7 +31,7 @@ public:
         : palette(palette)
     {
         reseed();
-  //  	analog = new BlackADC(AIN1); 
+    	analog = new BlackADC(AIN1); 
     }
 
     static const float xyzSpeed = 0.6;
@@ -61,8 +61,7 @@ public:
     float seed;
     float threshold;
 
-    //    BlackADC analog(AIN4);
-  //  BlackADC *analog;
+    BlackADC *analog;
 
     // Calculated once per frame
     float spacing;
@@ -195,17 +194,14 @@ public:
 
         // this returns 1.8-0.0
         // i kinda want to invert it
-     //   readBrightness = analog->getParsedValue(dap2);
+        readBrightness = analog->getParsedValue(dap2);
 
         // reasonable range is from 0.005 to 0.6; 
         float target = 0.005;
 
 
-      //  target = target + ((1.8 - readBrightness) / 3.0);
+        target = target + ((1.8 - readBrightness) / 3.0);
 
-
-        //float target = readBrightness; 
-        // targetBrightness;
         float current = pixelTotalDenominator ? pixelTotalNumerator / pixelTotalDenominator : 0.0f;
         bool blackLevel = current <= 0.0f;
 
@@ -237,7 +233,7 @@ public:
         fprintf(stderr, "\t[rings] timer = %f\n", timer);
         fprintf(stderr, "\t[rings] center = %f, %f, %f\n", center[0], center[1], center[2]);
         fprintf(stderr, "\t[rings] d = %f, %f, %f, %f\n", d[0], d[1], d[2], d[3]);
-  //      fprintf(stderr, "\t[rings] analog = %f\n", analog->getParsedValue(dap2));
+        fprintf(stderr, "\t[rings] analog = %f\n", analog->getParsedValue(dap2));
         fprintf(stderr, "\t[rings] readBrightness = %f\n", readBrightness);
         fprintf(stderr, "\t[rings] threshold = %f\n", threshold);
     }
