@@ -2,7 +2,9 @@
 
 . /boot/uboot/env.sh
 
-cd /home/debian/git/Active;
+echo cape-bone-iio > /sys/devices/bone_capemgr.*/slots
+
+cd $ACTIVE_HOME;
 
 while true; do
 

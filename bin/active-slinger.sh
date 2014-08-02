@@ -1,13 +1,15 @@
 #!/bin/bash
 
-LOG=/var/log/active-streamers.log 
+. /boot/uboot/env.sh
 
-export OPC_SERVER=192.168.163.141:7890
+cd $ACTIVE_HOME/src/
+echo "running against ./black-rings -v -layout $LAYOUT -server $OPC_SERVER" >> $STREAMER_LOG  2>&1
+./black-rings -v -layout $LAYOUT -server $OPC_SERVER >> $STREAMER_LOG  2>&1
 
-
-ls -ctr ./streamers/*.py ./streamers/active-streams/*.py | while read script
-do
-  echo "running '$script'..." >> $LOG  2>&1
-  timeout 10s $script  >> $LOG  2>&1
-  echo "done '$script'"  >> $LOG  2>&1
-done
+## loop through streamers
+#ls -ctr ./streamers/*.py ./streamers/active-streams/*.py | while read script
+#do
+#  echo "running '$script'..." >> $STREAMER_LOG  2>&1
+#  timeout 10s $script  >> $STREAMER_LOG  2>&1
+#  echo "done '$script'"  >> $STREAMER_LOG  2>&1
+#done

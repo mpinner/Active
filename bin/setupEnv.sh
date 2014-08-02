@@ -9,7 +9,7 @@ git clone https://github.com/mpinner/Active.git
 #setuo ACTIVE 
 cd ~debian/git/Active/bin/
 chmod +x *.sh
-cp env.sh /boot/uboot/
+sudo cp env.sh /boot/uboot/
 
 . /boot/uboot/env.sh
 
