@@ -1,10 +1,15 @@
 Active
 ===
+
 Lightning 10 gross LEDs begins in the one of a kind video art experience for visitors to The Source.
 
 Giant expansive space high above the patrons is sparsely populated for creative expression. bring a local flavor of of collaborative expression to a focal point below. 
 
-reacting to your motion as you enter the space; Sensors, video, images, and the live data from the internet are all merged to creating a living space above The Source, an urban marketplace in the Rino Arts District.
+Reacting to your motion as you enter the space; Sensors, video, images, and the live data from the internet are all merged to creating a living space above The Source, an urban marketplace in the Rino Arts District.
+
+
+[![pulsing led sculpture - evan miller + mpinner - test 01 ](http://img.youtube.com/vi/eXs2kY__nDY/0.jpg)](http://www.youtube.com/watch?v=eXs2kY__nDY)
+
 
 SRC
 ===
@@ -59,7 +64,7 @@ setting up root crontabs to aurostart
 	
 	sudo crontab -e 
 
-paste in the following
+paste in the [following](https://github.com/mpinner/Active/blob/master/bin/crontab)
 
 	# push-sparkdata.sh
 	00 11,23 * * *OB /home/debian/git/Active/bin/push-sparkdata.sh >> /var/log/active-push-sparkfun.log   2>&1

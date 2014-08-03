@@ -1,16 +1,16 @@
-	# push-sparkdata.sh
-	00 11,23 * * *OB /home/debian/git/Active/bin/push-sparkdata.sh >> /var/log/active-push-sparkfun.log   2>&1
-	
-	# configure spi overlay gpio pins
-	# creates /dev/spidev* files
-	@reboot /usr/bin/python -c "from Adafruit_BBIO.SPI import SPI; SPI(0,0)" >> /var/log/active-gpio.log 2>&1
-	
-	# this never worked. halp?
-	#@reboot echo cape-bone-iio > /sys/devices/bone_capemgr.*/slots 2>&1
+# push-sparkdata.sh
+00 11,23 * * *OB /home/debian/git/Active/bin/push-sparkdata.sh >> /var/log/active-push-sparkfun.log   2>&1
 
-	#start up our OPC SERVER
-	@reboot /home/debian/git/Active/bin/monitor-opc.sh >> /var/log/active-monitor.log 2>&1
-	
-	#start our pixel slinger (generates content)
-	
-	@reboot /home/debian/git/Active/bin/monitor-slinger.sh >> /var/log/active-monitor.log 2>&1 
+# configure spi overlay gpio pins
+# creates /dev/spidev* files
+@reboot /usr/bin/python -c "from Adafruit_BBIO.SPI import SPI; SPI(0,0)" >> /var/log/active-gpio.log 2>&1
+
+# this never worked. halp?
+#@reboot echo cape-bone-iio > /sys/devices/bone_capemgr.*/slots 2>&1
+
+#start up our OPC SERVER
+@reboot /home/debian/git/Active/bin/monitor-opc.sh >> /var/log/active-monitor.log 2>&1
+
+#start our pixel slinger (generates content)
+
+@reboot /home/debian/git/Active/bin/monitor-slinger.sh >> /var/log/active-monitor.log 2>&1 
