@@ -195,12 +195,23 @@ void renderJson() {
 
     float angleZ = degrees(radZ);
 
-    float rotation = 0.25 * PI;
+    float rotation = 0.4 * PI;
 
     float rotatedZ = radZ + rotation; 
-
-    float newY = sin(rotatedZ) * 12 / 5.0;
-    float newZ = cos(rotatedZ) * 12 / 5.0;
+    if (rotatedZ > 2*PI) { 
+      rotatedZ = 2*PI;
+    }
+    
+    float magnitude = sqrt ((j-12) * (j-12) + (l-12) * (l-12));
+    
+    float oldY = (l-12);
+    float oldZ = (j-12);
+    
+    float s = sin(rotation);
+    float c = cos(rotation);
+    
+    float newY = oldY * c - oldZ * s;
+    float newZ = oldY * s - oldZ * c;
     
     // round to nearest 1000th  // for sanity
     newY = round(newY * 1000) / 1000.00;
@@ -212,7 +223,8 @@ void renderJson() {
     //print("  {\"point\": [" + k + ", " + j+ ", " + l + "]}");
 
     //  print("  {\"point\": [" + (k-24)/5.0 + ", " + (l-12)/5.0 + ", " + (j-12)/5.0 + "]}");
-    print("  {\"point\": [" + (k-24)/5.0 + ", " + (j-12)/5.0 + ", " + (l-12)/5.0 + ", " + angleZ + ", " + newY + ", " + newZ + "]}");
+   // print("  {\"point\": [" + (k-24)/5.0 + ", " + (j-12)/5.0 + ", " + (l-12)/5.0 + ", " + angleZ + ", " + newY + ", " + newZ + "]}");
+    print("  {\"point\": [" + (k-24)/5.0 + ", " + newY/5.0 + ", " + newZ/5.0 + "]}");
   }
   print("\n]");
 
