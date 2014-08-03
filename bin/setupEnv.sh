@@ -7,12 +7,14 @@ git clone https://github.com/mpinner/Active.git
 
 
 #setuo ACTIVE 
-cd ~debian/git/Active/bin/
+cd /home/debian/git/Active/bin/
 chmod +x *.sh
 sudo cp env.sh /boot/uboot/
 
 . /boot/uboot/env.sh
 
+cd /home/debian/git/Active/streamers/
+chmod +x *.py
 
 sudo touch $OPC_LOG
 sudo touch $STREAMER_LOG
@@ -37,6 +39,13 @@ git checkout tlc5947
 sudo apt-get -y install mesa-common-dev freeglut3-dev 
 make
 
+#turn off bone scripts:
+systemctl disable bonescript.socket
+systemctl disable bonescript.service
+systemctl disable bonescript-autorun.service
+systemctl stop bonescript.socket
+systemctl stop bonescript.service
+systemctl stop bonescript-autorun.service
 
 
 
