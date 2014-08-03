@@ -89,8 +89,9 @@ paste in the [following](https://github.com/mpinner/Active/blob/master/bin/cront
 	
 
  
- INSPIRATION
- ====
+INSPIRATION
+====
+ 
 [Light Emitting Ball (LEB)](https://hackaday.io/project/138-Light-Emitting-Ball-(LEB))
 
 [Nsl Blinky Ball](http://charliex2.wordpress.com/2012/02/11/the-blinky-ball-nullspacelabs/)
