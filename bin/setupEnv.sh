@@ -7,7 +7,7 @@ git clone https://github.com/mpinner/Active.git
 
 
 #setuo ACTIVE 
-cd ~debian/git/Active/bin/
+cd /home/debian/git/Active/bin/
 chmod +x *.sh
 cp env.sh /boot/uboot/
 
@@ -31,8 +31,9 @@ sudo chown debian /etc/logrotate.d/active
 
 
 # setup OPC
+cd /home/debian/git/
 git clone https://github.com/mpinner/openpixelcontrol.git
-cd openpixelcontrol
+cd /home/debian/git/openpixelcontrol
 git checkout tlc5947
 sudo apt-get -y install mesa-common-dev freeglut3-dev 
 make
