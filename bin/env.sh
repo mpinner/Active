@@ -39,6 +39,7 @@ export OPC_LOG=$LOG_DIR/active-tlc5947-server.log
 export STREAMER_LOG=$LOG_DIR/active-streamers.log
 export MONITOR_LOG=$LOG_DIR/active-monitor.log
 export SPARKFUN_LOG=$LOG_DIR/active-push-sparkfun.log
+export ACTIVE_SPARKFUN_URL=http://data.sparkfun.com/input/wppV3QYqbOs0qzoaYoRq?private_key=wzzXAwMWNniaGBlXNl0G&=3.21
 
 
 cd $OPC_SERVER_DIR
