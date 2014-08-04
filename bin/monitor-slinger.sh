@@ -2,11 +2,13 @@
 
 . /boot/uboot/env.sh
 
-cd /home/debian/git/Active;
+echo cape-bone-iio > /sys/devices/bone_capemgr.*/slots
+
+cd $ACTIVE_HOME;
 
 while true; do
 
-    until ./bin/active-slinger.sh; do
+    until $ACTIVE_SLINGER_BIN; do
         echo "Active Slinger crashed with exit code $?.  Respawning.." >&2
         sleep 1
     done

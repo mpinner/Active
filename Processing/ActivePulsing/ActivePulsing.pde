@@ -88,15 +88,23 @@ void reCalcXBrightness() {
 
 
 void calcXPosition() {
-  print("[");
-  for (int j = 0; j < count[1]; j++) {
-    for (int k = 0; k < count[2]; k++) {
+  print("[\n");
+  for (int k = 0; k < count[2]; k++) {
+    for (int j = 0; j < count[1]; j++) {
+
 
       int distance = ((int)xDistance[j][k]);
-        xPosition[j][k] = distance;
-      print("{\"point\": [" + j + ", " + k + ", " + distance + "]},");
+      xPosition[j][k] = distance;
+
+      // output layout data
+      if ((j != 0) || (k != 0) ) {
+        print(",\n");
+      }
+      print("  {\"point\": [" + (k-24)/5.0 + ", " + (distance-12)/5.0 + ", " + (j-12)/5.0 + "]}");
     }
   }
+  print("\n]");
+
 
   return;
 }
