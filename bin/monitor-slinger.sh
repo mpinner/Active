@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. /home/debian/git/Active/bin/env.sh
+
 . /boot/uboot/env.sh
 
 echo cape-bone-iio > /sys/devices/bone_capemgr.*/slots

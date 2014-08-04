@@ -17,12 +17,21 @@ export IMAGE_DROP=/media/3108660521
 #standard installation directory for our main code base and git repo
 export ACTIVE_HOME=/home/debian/git/Active/
 
+# send to yourself
+#export ACTIVE_SLINGER_BIN=$ACTIVE_HOME/bin/active-local-default.sh
+export ACTIVE_SLINGER_BIN=$ACTIVE_HOME/bin/active-slinger.sh
+
+
 # layout file to use for the mapping from pixel indexes to physical space
 # a few options exist here to rotate the visual perspective
 export LAYOUT=$ACTIVE_HOME/layout/layout-60x24.json
 
+# sequences will restart after a duration to allow bin level cycling of active-streamers
+# small timeouts help for the OPC_SERVER host bc it allows other sources to connect
+export TIMEOUT=30s # seconds
+
 # ip and port of the beagle that is resident in the piece to push the pixels to the actual hardware
-export OPC_SERVER=192.168.7.1:7890
+export OPC_SERVER=127.0.0.1:7890
 
 
 # source for our fork of the OPC server code and binaries
@@ -39,7 +48,7 @@ export OPC_LOG=$LOG_DIR/active-tlc5947-server.log
 export STREAMER_LOG=$LOG_DIR/active-streamers.log
 export MONITOR_LOG=$LOG_DIR/active-monitor.log
 export SPARKFUN_LOG=$LOG_DIR/active-push-sparkfun.log
-export ACTIVE_SPARKFUN_URL=http://data.sparkfun.com/input/wppV3QYqbOs0qzoaYoRq?private_key=wzzXAwMWNniaGBlXNl0G&=3.21
+#export ACTIVE_SPARKFUN_URL=http://data.sparkfun.com/input/wppV3QYqbOs0qzoaYoRq?private_key=wzzXAwMWNniaGBlXNl0G&=3.21
 
 
 cd $OPC_SERVER_DIR
