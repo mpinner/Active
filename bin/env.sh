@@ -31,7 +31,14 @@ export LAYOUT=$ACTIVE_HOME/layout/layout-60x24.json
 export TIMEOUT=30s # seconds
 
 # ip and port of the beagle that is resident in the piece to push the pixels to the actual hardware
+#local tests
 export OPC_SERVER=127.0.0.1:7890
+
+#Active: white
+#export OPC_SERVER=192.168.162.141:7890
+
+#usb connection
+#export OPC_SERVER=192.168.7.1:7890
 
 
 # source for our fork of the OPC server code and binaries

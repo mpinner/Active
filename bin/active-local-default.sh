@@ -10,6 +10,6 @@ cd $ACTIVE_HOME/streamers/
 cat ./active-streamers.txt | while read script
 do
   echo "running '$script'..." >> $STREAMER_LOG  2>&1
-  timeout 30s ./$script  >> $STREAMER_LOG  2>&1
+  timeout $TIMEOUT ./$script  >> $STREAMER_LOG  2>&1
   echo "done '$script'"  >> $STREAMER_LOG  2>&1
 done

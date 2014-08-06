@@ -58,6 +58,7 @@ make
 
 # make cpp streamer
 cd /home/debian/git/Active/src
+make
 
 
 
