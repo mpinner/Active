@@ -65,7 +65,11 @@ alias restart-opc-server="sudo killall -r tlc"
 alias kill-opc-server="sudo killall -r opc tlc"
 alias logs="tail -f /var/log/active-*"
 alias restart-slinger-server="sudo killall -r tlc"
-alias kill-slinger-server="sudo killall -r slinger"
+alias kill-slinger="sudo killall -r slinger mixer"
+alias restart-slinger="sudo killall -r mixer"
+alias restart-slinger="sudo killall -r mixer"
+alias restart-bbb="sudo reboot -n"
+alias pull-latest="$ACTIVE_HOME/"
 
 
 
