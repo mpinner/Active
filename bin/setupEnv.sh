@@ -30,15 +30,19 @@ git checkout tlc5947
 
 
 
-#setuo ACTIVE 
+#setup ACTIVE 
 cd /home/debian/git/Active/bin/
 chmod +x *.sh
 sudo cp env.sh /boot/uboot/
 
 . /boot/uboot/env.sh
 
+echo ". /boot/uboot/env.sh" >> .bashrc 
+
 cd /home/debian/git/Active/streamers/
 chmod +x *.py
+
+
 
 sudo touch $OPC_LOG
 sudo touch $STREAMER_LOG
@@ -55,7 +59,7 @@ sudo chown debian $SPARKFUN_LOG
 sudo touch /etc/logrotate.d/active
 sudo chown debian /etc/logrotate.d/active 
 
-sudo /home/debian/git/Active/bin/hosts >> sudo /etc/hosts
+
 
 # make OPC
 cd /home/debian/git/openpixelcontrol
@@ -64,6 +68,13 @@ make
 # make cpp streamer
 cd /home/debian/git/Active/src
 make
+
+
+# sudo
+sudo su -
+cat /home/debian/git/Active/bin/hosts >> /etc/hosts
+echo ". /boot/uboot/env.sh" >> .bashrc 
+exit
 
 
 
