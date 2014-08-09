@@ -51,7 +51,7 @@ void setup() {
   calcXBrightness();
 
   img = loadImage("outfile.png");
-print (" image loaded is : " + img.width + "x" + img.height);
+  print (" image loaded is : " + img.width + "x" + img.height);
 
   calcImgColor();
 
@@ -136,12 +136,48 @@ void calcXPosition() {
         }
       }
 
-      //print("  {\"point\": [" + j + ", " + k+ ", " + xPosition[j][k] + "]}");
+      print("  {\"point\": [" + k + ", " + j+ ", " + xPosition[j][k] + "]}");
 
-       print("  {\"point\": [" + (k-24)/5.0 + ", " + (distance-12)/5.0 + ", " + (j-12)/5.0 + "]}");
+      // print("  {\"point\": [" + (k-24)/5.0 + ", " + (distance-12)/5.0 + ", " + (j-12)/5.0 + "]}");
     }
   }
   print("\n]");
+
+
+  return;
+}
+
+
+void renderCoordinates() {
+  print("int[][] LAYOUT = {\n");
+  print("{x, y, z},\n");
+  print("{0-59, 0-23, 0-23},\n");
+  print("{row, columns, lengths},\n");
+
+  for (int x = 0; x < count[2]; x++) {
+    for (int z = 0; z < count[0]; z++) {
+
+      boolean isFound = false;
+
+      // find distance value in our model      
+      for (int y = 0; y < count[1]; y++) {
+
+
+        if (z == xPosition[y][x]) {
+          isFound = true;
+          print(" {" + x + ", " + z + ", " + y + "}");
+
+          if ((x != (count[2]-1)) || (z != (count[0]-1))) {
+            print(",\n");
+          }
+
+          continue;
+        }
+      }
+
+    }
+  }
+  print("\n}");
 
 
   return;
@@ -218,15 +254,13 @@ void drawXDistance() {
 
         fill(xDistance[j][k]*10, 25, xBrightness[j][k], 60);
 
-      //  int frameRangeX = (int)map(mouseX, 0, width, 0, count[2]);
+        //  int frameRangeX = (int)map(mouseX, 0, width, 0, count[2]);
         if ( sliceToView == k) {
           fill(255, 255, 255);
           //sphere(sphereRadius);
-
         } 
-        
-        sphere(sphereRadius);
 
+        sphere(sphereRadius);
       } 
       else {
 
@@ -251,7 +285,7 @@ void draw() {
 
 
   background(0);
-  lights();
+//  lights();
   translate(width/2, height/2, 0);
 
 
@@ -380,8 +414,12 @@ void keyPressed() {
   if (key == 'j' || key == 'J') {
     sliceToView = (sliceToView - 1 + count[2]) % count[2];
   }
- if (key == 'k' || key == 'K') {
+  if (key == 'k' || key == 'K') {
     sliceToView = (sliceToView + 1) % count[2];
   }
+  if (key == 'c' || key == 'C') {
+    renderCoordinates();
+  }
 }
+
 

@@ -12,6 +12,11 @@
 
 PImage img;
 
+import processing.video.*;
+
+Movie mov;
+int newFrame = 0;
+int movFrameRate = 30;
 
 // ball geometry
 int sphereRadius = 4; // 4 -> .5 inches
@@ -41,6 +46,7 @@ int dropped = 0;
 
 // starts here
 void setup() {
+
   size(1280, 800, P3D);
   colorMode(HSB);
 
@@ -50,10 +56,29 @@ void setup() {
   calcXPosition();
   calcXBrightness();
 
-  img = loadImage("outfile.png");
-print (" image loaded is : " + img.width + "x" + img.height);
+  ///*
+   img = loadImage("outfile.png");
+   print (" image loaded is : " + img.width + "x" + img.height);
+   calcImgColor();
+   //*/
+   
+     image(img,0,0);
 
-  calcImgColor();
+
+  mov = new Movie(this, "fingers.mov");
+
+  // Pausing the video at the first frame. 
+  mov.play();
+  mov.jump(0);
+  mov.pause();
+
+  mov.loadPixels();
+
+//  img = new PImage(mov.width, mov.height);
+
+ // calcVideoColors();
+
+  print(" video pixels : " + mov.pixels.length);
 
   return;
 }
@@ -61,10 +86,35 @@ print (" image loaded is : " + img.width + "x" + img.height);
 void calcXDistance() {
   for (int j = 0; j < count[1]; j++) {
     for (int k = 0; k < count[2]; k++) {
-
       xDistance[j][k] = random(count[0]);
     }
   }
+
+  return;
+}
+
+
+void calcVideoColors() {
+
+  img.copy(mov, 
+  0, 0, mov.width, mov.height, 
+  0, 0, mov.width, mov.height);
+  //img.updatePixels();
+  mov.read();
+  loadPixels();
+  mov.loadPixels();
+  img.loadPixels();
+
+  img.resize(60, 24);
+  img.loadPixels();
+
+  for (int j = 0; j < count[1]; j++) {
+    for (int k = 0; k < count[2]; k++) {
+      img.resize(60, 24);
+      colors[j][k] = img.pixels[j*count[1]+k];
+    }
+  }
+  
 
   return;
 }
@@ -136,9 +186,9 @@ void calcXPosition() {
         }
       }
 
-      //print("  {\"point\": [" + j + ", " + k+ ", " + xPosition[j][k] + "]}");
+      print("  {\"point\": [" + j + ", " + k+ ", " + xPosition[j][k] + "]}");
 
-       print("  {\"point\": [" + (k-24)/5.0 + ", " + (distance-12)/5.0 + ", " + (j-12)/5.0 + "]}");
+      // print("  {\"point\": [" + (k-24)/5.0 + ", " + (distance-12)/5.0 + ", " + (j-12)/5.0 + "]}");
     }
   }
   print("\n]");
@@ -218,15 +268,13 @@ void drawXDistance() {
 
         fill(xDistance[j][k]*10, 25, xBrightness[j][k], 60);
 
-      //  int frameRangeX = (int)map(mouseX, 0, width, 0, count[2]);
+        //  int frameRangeX = (int)map(mouseX, 0, width, 0, count[2]);
         if ( sliceToView == k) {
           fill(255, 255, 255);
           //sphere(sphereRadius);
-
         } 
-        
-        sphere(sphereRadius);
 
+        sphere(sphereRadius);
       } 
       else {
 
@@ -380,8 +428,53 @@ void keyPressed() {
   if (key == 'j' || key == 'J') {
     sliceToView = (sliceToView - 1 + count[2]) % count[2];
   }
- if (key == 'k' || key == 'K') {
+  if (key == 'k' || key == 'K') {
     sliceToView = (sliceToView + 1) % count[2];
   }
+
+  if (key == CODED) {
+    if (keyCode == LEFT) {
+      if (0 < newFrame) newFrame--;
+    } 
+    else if (keyCode == RIGHT) {
+      if (newFrame < getLength() - 1) newFrame++;
+    }
+  } 
+  setFrame(newFrame);
+}
+
+
+int getFrame() {    
+  return ceil(mov.time() * 30) - 1;
+}
+
+
+void setFrame(int n) {
+  mov.play();
+
+  // The duration of a single frame:
+  float frameDuration = 1.0 / movFrameRate;
+
+  // We move to the middle of the frame by adding 0.5:
+  float where = (n + 0.5) * frameDuration; 
+
+  // Taking into account border effects:
+  float diff = mov.duration() - where;
+  if (diff < 0) {
+    where += diff - 0.25 * frameDuration;
+  }
+
+  mov.jump(where);
+  mov.pause();
+}  
+
+
+int getLength() {
+  return int(mov.duration() * movFrameRate);
+}  
+
+
+void movieEvent(Movie m) {
+  m.read();
 }
 

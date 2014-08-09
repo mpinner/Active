@@ -2,23 +2,48 @@
 
 # Open Pixel Control client: Every other light to solid white, others dark.
 
-import opc, time, os
+import opc, time, props
 
-numPairs = 1440
-client = opc.Client(os.getenv('OPC_SERVER'))
+numPairs = props.PIXELS
+client = opc.Client(props.OPC_SERVER)
+
+brightness = props.BRIGHTNESS;
+
+stepSize = brightness/16
 
 
-for phase in range(1,24):	
-	pattern = [];
+pattern = [(0, 0, 0)] *  numPairs;
+
+for phase in range(numPairs/6, 1, -1):	
 
 	for i in range(0,numPairs) :
 		if (0 == i%phase):
-			pattern.append((255,255,255));
+			pattern[i] = (brightness,brightness,brightness);
 		else:
-			pattern.append((0,0,0));
+			current = pattern[i]
+			step = current[0]-stepSize
+			step = 0 if step < 0 else step
+			pattern[i]= (step,step,step);
 
 	# Fade to white
 	client.put_pixels(pattern)
-	time.sleep(0.5)
+	time.sleep(0.25)
+
+
+for phase in range(1,numPairs/6):	
+
+	for i in range(0,numPairs) :
+		if (0 == i%phase):
+			pattern[i] = (brightness,brightness,brightness);
+		else:
+			current = pattern[i]
+			step = current[0]-stepSize
+			step = 0 if step < 0 else step
+			pattern[i]= (step,step,step);
+
+	# Fade to white
+	client.put_pixels(pattern)
+	time.sleep(0.25)
+	
 
 

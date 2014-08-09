@@ -10,9 +10,6 @@
 //
 // bugs: video capture and 3d rendering dont really play well together in processing. i'll move to the real hardware.
 
-PImage img;
-
-
 // ball geometry
 int sphereRadius = 4; // 4 -> .5 inches
 int sphereDistanceBetween = 8; // 8 -> 2 inches , 6 -> 1.5 inches
@@ -34,8 +31,6 @@ boolean[][][] on = new boolean[count[0]][count[1]][count[2]];
 float[][] xDistance = new float[count[1]][count[2]];
 int[][] xPosition = new int[count[1]][count[2]];
 int[][] xBrightness = new int[count[1]][count[2]];
-int[][] colors = new color[count[1]][count[2]];
-
 
 int dropped = 0;
 
@@ -50,11 +45,6 @@ void setup() {
   calcXPosition();
   calcXBrightness();
 
-  img = loadImage("outfile.png");
-print (" image loaded is : " + img.width + "x" + img.height);
-
-  calcImgColor();
-
   return;
 }
 
@@ -63,18 +53,6 @@ void calcXDistance() {
     for (int k = 0; k < count[2]; k++) {
 
       xDistance[j][k] = random(count[0]);
-    }
-  }
-
-  return;
-}
-
-
-void calcImgColor() {
-  for (int j = 0; j < count[1]; j++) {
-    for (int k = 0; k < count[2]; k++) {
-
-      colors[j][k] = (int)img.get(k, j);
     }
   }
 
@@ -136,9 +114,9 @@ void calcXPosition() {
         }
       }
 
-      //print("  {\"point\": [" + j + ", " + k+ ", " + xPosition[j][k] + "]}");
+      print("  {\"point\": [" + j + ", " + k+ ", " + xPosition[j][k] + "]}");
 
-       print("  {\"point\": [" + (k-24)/5.0 + ", " + (distance-12)/5.0 + ", " + (j-12)/5.0 + "]}");
+      // print("  {\"point\": [" + (k-24)/5.0 + ", " + (distance-12)/5.0 + ", " + (j-12)/5.0 + "]}");
     }
   }
   print("\n]");
@@ -232,7 +210,7 @@ void drawXDistance() {
 
 
         //// not slice View
-        fill(colors[j][k]);
+        fill(xDistance[j][k]*10, 25, xBrightness[j][k]);
 
         sphere(sphereRadius);
       }

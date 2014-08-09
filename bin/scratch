@@ -1,0 +1,49 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+DotEffect nyan("data/nyan.png");
+mixer.add(&nyan);
+
+DotEffect crash("data/crash.png");
+mixer.add(&crash);
+
+DotEffect sky("data/sky.png");
+mixer.add(&sky);
+
+DotEffect glass("data/glass.png");
+mixer.add(&glass);
+
+DotEffect dot("data/dot.png");
+mixer.add(&dot);
+
+DotEffect dance("data/dance.png");
+mixer.add(&dance);
+
+DotEffect dance("data/dance-in.png");
+mixer.add(&dance);
+
+DotEffect startingcrow("data/startingcrow.png");
+mixer.add(&startingcrow);
+
+DotEffect crow("data/crow_up.png");
+mixer.add(&crow);
+
+DotEffect crow("data/crow_flying_down.png");
+mixer.add(&crow);
+
+DotEffect gull("data/gull_flying.png");
+mixer.add(&gull);
+
+DotEffect flying("data/flying-pelican.png");
+mixer.add(&flying);
+
+DotEffect bruja("data/bruja.png");
+mixer.add(&bruja);
+
+DotEffect cat("data/cat.png");
+mixer.add(&cat);
+
+DotEffect bat("data/bat.png");
+mixer.add(&bat);

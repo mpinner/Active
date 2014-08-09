@@ -5,7 +5,7 @@
 
 import opc, time, math, os
 
-numLEDs = 512
+numLEDs = 1440
 client = opc.Client(os.getenv('OPC_SERVER'))
 
 t = 0

@@ -17,7 +17,7 @@ pattern = [(0, 0, 0)] *  numPairs;
 
 def mirrorX(i, color):
 	pattern[i] = color;
-	(int)i/props.COLUMNS
+	i/props.COLUMNS
 
 	pattern[]
 
