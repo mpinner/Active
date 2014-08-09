@@ -75,7 +75,7 @@ Setup root crontab for script autorun
 Add in the [following](https://github.com/mpinner/Active/blob/master/bin/crontab)
 
 	# push-sparkdata.sh
-	00 11,23 * * *OB /home/debian/git/Active/bin/push-sparkdata.sh >> /var/log/active-push-sparkfun.log   2>&1
+	00 11,23 * * * /home/debian/git/Active/bin/push-sparkdata.sh >> /var/log/active-push-sparkfun.log   2>&1
 	
 	# configure spi overlay gpio pins
 	# creates /dev/spidev* files
@@ -105,7 +105,7 @@ Edit /etc/fstab to make for less disk
 	tmpfs /var/tmp tmpfs defaults,noatime 0 0 
 	tmpfs /var/lib/dhcp3 tmpfs defaults,noatime 0 0 
 	
-	
+Double check /boot/uboot/env.sh for IP addresses and the configurations you might want.
 
  
 INSPIRATION
