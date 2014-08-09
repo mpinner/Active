@@ -69,7 +69,8 @@ alias kill-slinger="sudo killall -r slinger mixer"
 alias restart-slinger="sudo killall -r mixer"
 alias restart-slinger="sudo killall -r mixer"
 alias restart-bbb="sudo reboot -n"
-alias pull-latest="$ACTIVE_HOME/"
+alias pull-latest="$ACTIVE_HOME/bin/pull-latest.sh"
+alias build-latest="$ACTIVE_HOME/bin/build-latest.sh"
 
 
 
