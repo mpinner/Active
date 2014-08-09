@@ -3,9 +3,13 @@
 cd /home/debian
 
 #system libraries
-sudo apt-get -y install mesa-common-dev freeglut3-dev 
+sudo apt-get -y install mesa-common-dev freeglut3-dev
+
+# if you have a new beagle bone w 4gb 
+sudo apt-get -y install emacs
 
 
+# if you have an old beagle bone w 2gb 
 #turn off bone scripts:
 systemctl disable bonescript.socket
 systemctl disable bonescript.service
@@ -51,6 +55,7 @@ sudo chown debian $SPARKFUN_LOG
 sudo touch /etc/logrotate.d/active
 sudo chown debian /etc/logrotate.d/active 
 
+sudo /home/debian/git/Active/bin/hosts >> sudo /etc/hosts
 
 # make OPC
 cd /home/debian/git/openpixelcontrol

@@ -5,6 +5,7 @@
 # author: @mpinner
 # intent:
 #  - holds properties for configuring beaglebone for Active
+#  - hold commands for administering the services
 #  - this is stored in the /boot/uboot/ so it can be accessed via usb when the BBB
 #    appears as a removeable drive.
 #  - most changes here will require a reboot of the BBB before they take affect
@@ -12,7 +13,7 @@
 
 
 # images can be added via thumbdrive which mounts as the following
-export IMAGE_DROP=/media/3108660521
+export IMAGE_DROP=/media/ACTIVE
 
 #standard installation directory for our main code base and git repo
 export ACTIVE_HOME=/home/debian/git/Active/
@@ -35,7 +36,7 @@ export TIMEOUT=30s # seconds
 export OPC_SERVER=127.0.0.1:7890
 
 #Active: white
-#export OPC_SERVER=192.168.162.141:7890
+#export OPC_SERVER=192.168.163.141:7890
 
 #usb connection
 #export OPC_SERVER=192.168.7.1:7890
@@ -60,6 +61,12 @@ export SPARKFUN_LOG=$LOG_DIR/active-push-sparkfun.log
 
 cd $OPC_SERVER_DIR
 alias activegl="cd OPC_SERVER_DIR; $OPC_SERVER_BIN $LAYOUT "
+alias restart-opc-server="sudo killall -r tlc"
+alias kill-opc-server="sudo killall -r opc tlc"
+alias logs="tail -f /var/log/active-*"
+alias restart-slinger-server="sudo killall -r tlc"
+alias kill-slinger-server="sudo killall -r slinger"
+
 
 
 

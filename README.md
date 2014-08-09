@@ -57,7 +57,7 @@ Pulling the latest and Building
 	git clone https://github.com/mpinner/Active.git
 
 	chmod +x Active/bin/env.sh
-	. Active/bin/env.sh
+	. Active/bin/*.sh
 	./Active/bin/setupEnv.sh
 	cd Active/src
 	make
@@ -68,11 +68,11 @@ my openpixelcontrol fork with SPI / TLC support
 	cd openpixelcontrol
 	make
 	
-setting up root crontabs to aurostart
+Setup root crontab for script autorun
 	
 	sudo crontab -e 
 
-paste in the [following](https://github.com/mpinner/Active/blob/master/bin/crontab)
+Add in the [following](https://github.com/mpinner/Active/blob/master/bin/crontab)
 
 	# push-sparkdata.sh
 	00 11,23 * * *OB /home/debian/git/Active/bin/push-sparkdata.sh >> /var/log/active-push-sparkfun.log   2>&1
@@ -93,6 +93,17 @@ paste in the [following](https://github.com/mpinner/Active/blob/master/bin/cront
 
 
 	
+Edit /etc/fstab to make for less disk
+
+	UUID=8037fd09-ea0d-4c28-a348-1fbdf9fb0b92 / ext3 
+	relatime,noatime,errors=remount-ro 0 1 
+	
+	tmpfs /tmp tmpfs defaults,noatime 0 0 
+	tmpfs /var/run tmpfs defaults,noatime 0 0 
+	tmpfs /var/log tmpfs defaults,noatime 0 0 
+	tmpfs /var/lock tmpfs defaults,noatime 0 0 
+	tmpfs /var/tmp tmpfs defaults,noatime 0 0 
+	tmpfs /var/lib/dhcp3 tmpfs defaults,noatime 0 0 
 	
 	
 
