@@ -13,7 +13,7 @@
 
 
 # images can be added via thumbdrive which mounts as the following
-export IMAGE_DROP=/media/ACTIVE
+export THUMB_DRIVE=/media/ACTIVE
 
 #standard installation directory for our main code base and git repo
 export ACTIVE_HOME=/home/debian/git/Active/
