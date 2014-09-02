@@ -1,4 +1,4 @@
-PROGRAMS = simple rings spokes dot particle_trail mixer images
+PROGRAMS = simple rings spokes dot particle_trail mixer images video
 
 
 # Important optimization options

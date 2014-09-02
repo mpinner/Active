@@ -22,14 +22,14 @@ public:
 
     virtual void beginFrame(const FrameInfo &f)
     {
-        const float tailLength = 8.0f;
-        const float speed = 0.04f;  //SLOW
-      //  const float speed = 5.09f;  //FAST
+        const float tailLength = 4.0f;
+	//  const float speed = 0.01f;  //SLOW
+        const float speed = 0.29f;  //FAST
         const float lfoRatio = 0.15f;
-        const float notLfoRatio = 0.01f;
-        const float hueRate = 0.01f;
+        const float notLfoRatio = 0.30f;
+        const float hueRate = 0.1f;
         const float brightness = 40.0f;
-        const unsigned numParticles = 200;
+        const unsigned numParticles = 15;
 
         // Low frequency oscillators
         angle1 = fmodf(angle1 + f.timeDelta * speed, 2 * M_PI);
@@ -43,9 +43,9 @@ public:
             float tail = s * tailLength;
 
             float radius = 0.2 + 2.0 * s;
-            float x = radius * cos(angle1 + tail) * 2.0 + 1.0;
-            float y = radius * sin(angle1 + tail + 10.0 * sin(angle2 + tail * lfoRatio));
-            float z = radius * cos(angle3 + tail);   
+            float x = radius * cos(angle1 + tail) * 3.0 + 1.0;
+            float y = radius * sin(angle1 + tail + 12.0 * sin(angle2 + tail * lfoRatio));
+            float z = radius * sin(angle3 + tail);   
             float hue = baseHue + s * 0.4;
 
             ParticleAppearance& p = appearance[i];

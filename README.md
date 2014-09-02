@@ -77,19 +77,18 @@ Add in the [following](https://github.com/mpinner/Active/blob/master/bin/crontab
 	# push-sparkdata.sh
 	00 11,23 * * * /home/debian/git/Active/bin/push-sparkdata.sh >> /var/log/active-push-sparkfun.log   2>&1
 	
-	# configure spi overlay gpio pins
+	# starts spi overlay gpio pins
 	# creates /dev/spidev* files
 	@reboot /usr/bin/python -c "from Adafruit_BBIO.SPI import SPI; SPI(0,0)" >> /var/log/active-gpio.log 2>&1
 	
-	# this never worked. halp?
-	#@reboot echo cape-bone-iio > /sys/devices/bone_capemgr.*/slots 2>&1
+	#pre-process videos 
+	#(with some large videos bbb cannot transcode in realtime)
+	*/1 * * * * /home/debian/git/Active/bin/process-videos.sh >> /var/log/active-process-videos.log   2>&1
+	
+	# on boot start whatever this bone id configured for
+	@reboot /home/debian/git/Active/bin/run.sh >> /var/log/active-monitor.log 2>&1
+	
 
-	#start up our OPC SERVER
-	@reboot /home/debian/git/Active/bin/monitor-opc.sh >> /var/log/active-monitor.log 2>&1
-	
-	#start our pixel slinger (generates content)
-	
-	@reboot /home/debian/git/Active/bin/monitor-slinger.sh >> /var/log/active-monitor.log 2>&1 
 
 
 	

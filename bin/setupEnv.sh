@@ -11,12 +11,12 @@ sudo apt-get -y install emacs
 
 # if you have an old beagle bone w 2gb 
 #turn off bone scripts:
-systemctl disable bonescript.socket
-systemctl disable bonescript.service
-systemctl disable bonescript-autorun.service
-systemctl stop bonescript.socket
-systemctl stop bonescript.service
-systemctl stop bonescript-autorun.service
+sudo systemctl disable bonescript.socket
+sudo systemctl disable bonescript.service
+sudo systemctl disable bonescript-autorun.service
+sudo systemctl stop bonescript.socket
+sudo systemctl stop bonescript.service
+sudo systemctl stop bonescript-autorun.service
 
 
 
@@ -75,6 +75,43 @@ sudo su -
 cat /home/debian/git/Active/bin/hosts >> /etc/hosts
 echo ". /boot/uboot/env.sh" >> .bashrc 
 exit
+
+
+
+
+
+cd ~/git;
+git clone git://git.videolan.org/x264.git
+cd x264/
+./configure --enable-static --enable-shared
+date ; make ; date
+
+
+sudo su -
+cd /home/debian/git/x264
+make install
+ldconfig
+
+exit
+
+cd ~/git;
+git clone git://git.videolan.org/ffmpeg.git
+cd ffmpeg
+./configure --enable-shared --enable-libx264 --enable-gpl
+git remote set-url origin git://source.ffmpeg.org/ffmpeg
+make
+sudo make install
+
+
+
+sudo su -
+cd /home/debian/git/ffmpeg
+make install
+ldconfig
+
+exit
+
+
 
 
 
