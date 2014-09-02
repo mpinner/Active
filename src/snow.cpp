@@ -1,12 +1,15 @@
 #include "lib/effect_runner.h"
-#include "particle_trail.h"
+#include "snow.h"
 
 int main(int argc, char **argv)
 {
     EffectRunner r;
-    ParticleTrailEffect e;
+
+    SnowEffect e;
     r.setEffect(&e);
-    r.setMaxFrameRate(30);
+
+    // Defaults, overridable with command line options
     r.setLayout("../layouts/grid32x16z.json");
+
     return r.main(argc, argv);
 }

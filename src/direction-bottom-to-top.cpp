@@ -23,9 +23,11 @@ public:
 
     virtual void shader(Vec3& rgb, const PixelInfo &p) const
     {
-        float distance = len(p.point);
-        float wave = sinf(3.0 * distance - cycle) ; //+ noise3(p.point);
-        hsv2rgb(rgb, 0.2, 0.3, wave);
+        if (p.point[1] == -2.4) {
+            hsv2rgb(rgb, 0.2, 0.3, 1.0);
+    
+        }
+       
     }
 };
 
@@ -37,7 +39,7 @@ int main(int argc, char **argv)
     r.setEffect(&e);
 
     // Defaults, overridable with command line options
-    r.setMaxFrameRate(30);
+    r.setMaxFrameRate(100);
     r.setLayout("../layouts/grid32x16z.json");
 
     return r.main(argc, argv);

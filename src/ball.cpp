@@ -1,12 +1,18 @@
+// Simple example effect:
+// Draws a noise pattern modulated by an expanding sine wave.
+
 #include "lib/effect_runner.h"
-#include "particle_trail.h"
+#include "ball.h"
 
 int main(int argc, char **argv)
 {
     EffectRunner r;
-    ParticleTrailEffect e;
+
+    BallEffect e;
     r.setEffect(&e);
-    r.setMaxFrameRate(30);
+
+    // Defaults, overridable with command line options
     r.setLayout("../layouts/grid32x16z.json");
+
     return r.main(argc, argv);
 }

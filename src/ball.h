@@ -1,4 +1,4 @@
-// Simple example effect:
+// Ball effect:
 // Draws a noise pattern modulated by an expanding sine wave.
 
 #include <math.h>
@@ -7,17 +7,17 @@
 #include "lib/effect_runner.h"
 #include "lib/noise.h"
 
-class MyEffect : public Effect
+class BallEffect : public Effect
 {
 public:
-    MyEffect()
+    BallEffect()
         : cycle (0) {}
 
     float cycle;
 
     virtual void beginFrame(const FrameInfo &f)
     {
-        const float speed = 10.0;
+        const float speed = 1.0;
         cycle = fmodf(cycle + f.timeDelta * speed, 2 * M_PI);
     }
 
@@ -28,17 +28,3 @@ public:
         hsv2rgb(rgb, 0.2, 0.3, wave);
     }
 };
-
-int main(int argc, char **argv)
-{
-    EffectRunner r;
-
-    MyEffect e;
-    r.setEffect(&e);
-
-    // Defaults, overridable with command line options
-    r.setMaxFrameRate(30);
-    r.setLayout("../layouts/grid32x16z.json");
-
-    return r.main(argc, argv);
-}
