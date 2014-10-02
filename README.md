@@ -11,7 +11,7 @@ Giant expansive space high above the patrons is sparsely populated for creative 
 Reacting to your motion as you enter the space; Sensors, video, images, and the live data from the internet are all merged to creating a living space above The Source, an urban marketplace in the Rino Arts District.
 
 
-[opening event](https://raw.githubusercontent.com/mpinner/Active/master/docs/Active_flyer_dm.jpg)
+[![opening event](https://raw.githubusercontent.com/mpinner/Active/master/docs/Active_flyer_dm.jpg)]
 
 
 
