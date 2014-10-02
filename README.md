@@ -1,7 +1,7 @@
 Active
 ===
 
-[![pulsing led sculpture - evan miller + mpinner - test 01 ](http://img.youtube.com/vi/6qRlZ3MchNk/0.jpg)](http://www.youtube.com/watch?v=6qRlZ3MchNk)
+[![pulsing led sculpture - evan miller + mpinner - test 01 ](https://raw.githubusercontent.com/mpinner/Active/master/docs/Active_SmokeMonster_tb.gif)](http://www.youtube.com/watch?v=6qRlZ3MchNk)
 
 
 Lightning 10 gross LEDs begins in the one of a kind video art experience for visitors to The Source.
@@ -9,6 +9,9 @@ Lightning 10 gross LEDs begins in the one of a kind video art experience for vis
 Giant expansive space high above the patrons is sparsely populated for creative expression. bring a local flavor of of collaborative expression to a focal point below. 
 
 Reacting to your motion as you enter the space; Sensors, video, images, and the live data from the internet are all merged to creating a living space above The Source, an urban marketplace in the Rino Arts District.
+
+
+[opening event](https://raw.githubusercontent.com/mpinner/Active/master/docs/Active_flyer_dm.jpg)
 
 
 
@@ -32,7 +35,8 @@ PROCESSING
 Toolkit for developing image manipulation code, layouts, and renderings for concept art in [Processing](https://www.processing.org/)
 
 **processing simulation**
-[![pulsing led sculpture - evan miller + mpinner - test 01 ](http://img.youtube.com/vi/eXs2kY__nDY/0.jpg)](http://www.youtube.com/watch?v=eXs2kY__nDY)
+
+[![pulsing led sculpture - evan miller + mpinner - test 01 ](https://raw.githubusercontent.com/mpinner/Active/master/docs/Active_TieFighter_tb.gif)](http://www.youtube.com/watch?v=eXs2kY__nDY)
 
 
 
@@ -54,19 +58,25 @@ Installation
 
 Pulling the latest and Building
 	
+	mkdir git; cd git
 	git clone https://github.com/mpinner/Active.git
-
-	chmod +x Active/bin/env.sh
-	. Active/bin/*.sh
-	./Active/bin/setupEnv.sh
-	cd Active/src
-	make
+	cd Active/bin/
+	chmod +x *.sh
+	. ./env.sh
+	./setupEnv.sh
+	
 	
 my openpixelcontrol fork with SPI / TLC support
 	
 	git clone https://github.com/mpinner/openpixelcontrol.git 
 	cd openpixelcontrol
 	make
+
+	
+change hostname
+
+	sudo emacs  /etc/hostname
+	sudo emacs /etc/hosts
 	
 Setup root crontab for script autorun
 	
