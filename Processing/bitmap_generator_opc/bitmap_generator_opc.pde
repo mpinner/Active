@@ -30,18 +30,19 @@ String filename="";       // variable to store the filename used to save all the
 
 int coordinateValue = 0;
 
+boolean renderFromLower = true;
 
 int cols = 60;  // used as a constant
 int rows = 24;  // used as a constant
 
 void setup() {
 
-  // build the grid used to represent each "pixel" of the bitmap
+  // build the grid used to repre each "pixel" of the bitmap
   size(1200, 480);
       strokeWeight(0);
 
   
-    i2o = new Img2Opc(this, "localhost", 7890, displayWidth, displayHeight);
+    i2o = new Img2Opc(this, "white", 7890, displayWidth, displayHeight);
     
 
 
@@ -295,6 +296,6 @@ class Cell {
 void paintScreen() {
 PImage img = get();
 img.updatePixels();
-i2o.sendImg(img);
+i2o.sendImg(img, renderFromLower  );
 }
 
