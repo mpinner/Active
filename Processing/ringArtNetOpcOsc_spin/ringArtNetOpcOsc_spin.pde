@@ -29,8 +29,8 @@ void setup()
   opc = new OPC(this, "127.0.0.1", 7890);
 
   // Map one 24-LED ring to the center of the window
-  opc.ledRing(0, 4, width/3, height/2, width*0.18, 0);
-  opc.ledRing(0, 4, width*2/3, height/2, width*0.18, 0);
+  opc.ledRing(0, 4, width/2, height/2, width*0.3, 0);
+  opc.ledRing(4, 4, width/2, height/2, width*0.1, 0);
 }
 
 
@@ -49,10 +49,12 @@ void draw()
   float a = millis();
 
   blendMode(ADD);
-  tint(40, 100, 40);
-  drawDot(a * -0.002, width*0.1, width*0.6);
+  tint(40, 0, 130);
+  drawDot(a * -0.002, width*0.2, width*0.6);
+  
   tint(155, 155, 155);
-  drawDot(a * -0.003, width*0.1, width*0.6);
+  drawDot(a * -0.001, width*0.2, width*0.6);
+  
   tint(90, 90, 155);
   drawDot(a *  0.001, width*0.1, width*0.6);
   
@@ -77,11 +79,6 @@ void draw()
   }
   
   
-    msg.add(position.get(); 
-    msg.add(green(pixel)); 
-    msg.add(blue(pixel)); 
-    
-
  
   
   
